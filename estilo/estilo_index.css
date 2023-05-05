@@ -8,11 +8,6 @@ h1 {
     margin: 0;
 }
 
-* {
-    box-sizing: border-box;
-    font-family: Arial, Helvetica, sans-serif;
-}
-
 body {
     margin: 0;
     font-family: Arial, Helvetica, sans-serif;
@@ -22,7 +17,9 @@ body {
 .topnav {
     overflow: hidden;
     display: flex;
-    align-items: center;
+    flex-direction: column;
+    height: auto;
+    margin-top: auto;
 }
 
 /* Style the topnav links */
@@ -44,13 +41,22 @@ body {
 /* Style the content */
 .content {
     background-color:antiquewhite;
-    padding: 10px;
-    height: 200px;
+    display: flex;
+    flex-direction: row;
+    height: auto;
     /* Should be removed. Only for demonstration */
 }
+
+.content > div{
+   margin: 10px;
+   padding: 20px;
+}
+
+
 
 /* Style the footer */
 .footer {
     background-color: orange;
-    padding: 10px;
+    padding: 1000px ;
+    height:max-content;
 }
