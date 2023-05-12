@@ -1,16 +1,23 @@
 body {
-    background-color:antiquewhite;
+    background-color: white;
 }
 
 h1 {
-    font-family: Impact, 'Arial Narrow Bold', sans-serif;
+    font-family: 'Advent Pro', sans-serif;
     font-size: 150px;
     margin: 0;
+    padding-right: 110px;
+    font-weight: bolder;
 }
 
 body {
     margin: 0;
     font-family: Arial, Helvetica, sans-serif;
+}
+
+p {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-size: larger;
 }
 
 /* Style the top navigation bar */
@@ -20,17 +27,11 @@ body {
     flex-direction: column;
     height: auto;
     margin-top: auto;
+    position: relative;
+    margin-bottom: 120px;
 }
 
 /* Style the topnav links */
-.topnav a {
-    float:left;
-    color:black;
-    text-align: center;
-    align-items: center;
-    padding: 14px 16px;
-    text-decoration: none;
-}
 
 /* Change color on hover */
 .topnav a:hover {
@@ -38,25 +39,68 @@ body {
     color: black;
 }
 
+.menu {
+    position: absolute;
+    right: 10px;
+}
+
+.menu ul {
+    list-style: none;
+}
+
+.menu li {
+    display: inline-block;
+    padding: 15px;
+    font-family: 'Advent Pro', sans-serif;
+    font-weight: 600;
+    font-size: large;
+}
+
+.menu a {
+    text-decoration: none;
+    color: black;
+}
+
 /* Style the content */
 .content {
-    background-color:antiquewhite;
+    background-color: white;
     display: flex;
+    position: relative;
     flex-direction: row;
-    height: auto;
+    justify-content: center;
+    padding: auto;
+    margin: auto;
+    height: 230px;
     /* Should be removed. Only for demonstration */
 }
 
-.content > div{
-   margin: 10px;
-   padding: 20px;
+
+
+.content>.parrafo {
+    display: block;
+    margin-bottom: 100px;
+    padding-left: 100px;
+    position: absolute;
+    right: 80px;
 }
 
 
-
 /* Style the footer */
-.footer {
-    background-color: orange;
-    padding: 1000px ;
-    height:max-content;
+.naranja {
+    background-color: rgb(255, 140, 0);
+    padding: 20%;
+    position: relative;
+}
+
+.naranja>.burguer {
+    position: absolute;
+    top: -296px;
+    left: 100px;
+}
+
+.naranja p {
+    align-items: flex-start;
+    position: absolute;
+    right: 110px;
+    top: 10px;
 }
