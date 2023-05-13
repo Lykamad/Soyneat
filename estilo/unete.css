@@ -1,3 +1,7 @@
+html{
+  height: 100vh;
+}
+
 .content {
   background-color: white;
   display: flex;
@@ -6,7 +10,7 @@
   justify-content: center;
   padding: auto;
   margin: auto;
-  height: 230px;
+  height: 300px;
   /* Should be removed. Only for demonstration */
 }
 
@@ -74,6 +78,7 @@ body {
   padding-left: 50px;
   padding-top: 20px;
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  height: 100%;
 
 }
 
@@ -102,4 +107,9 @@ body {
   color: #fff;
   border: 2px solid #ffffff;
   border-radius: 20px;
+}
+
+.footer{
+  display: block;
+  position: relative;
 }
