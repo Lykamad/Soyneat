@@ -1,6 +1,4 @@
-<?php
-include("includes/a_config.php");
-?>
+
 
 <!DOCTYPE html>
 <html>
@@ -17,7 +15,8 @@ include("includes/a_config.php");
   ?>
   <h2>¡Regístrate!</h2>
   <div class="content">
-    <form>
+       
+    <form action="singup-usuario.php" method="POST" name="form" enctype="multipart/form-data">
       <label for="email">Correo electrónico</label>
       <input type="text" id="pastillas" name="email"><br><br>
       <label for="usuario">Nombre usuario</label>
@@ -29,6 +28,7 @@ include("includes/a_config.php");
       <p>¿Ya tienes una cuenta?</p>
       <a href="login.php">Inicia sesión</a>
     </form>
+    
 
     <div class="panel">
       <img src="imagenes/singup_panel.png" width="500" height="400">
