@@ -1,0 +1,217 @@
+
+
+
+#pedidodiventero {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-start;
+    margin: 0;
+    background-color: white;
+
+    font-family: 'Advent Pro', sans-serif;
+}
+
+
+#cesta {
+    background-color: #7A1A67;
+    width: 24vw;  /* Es importante que esta width y el margin de la otra caja sean el mismo */
+    color: white;
+    border-top-right-radius: 35px;
+    position: fixed;
+    height: 100%;
+
+    margin-top: 92px;
+}
+
+.cestamenu {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-left: 2vw;
+    margin-right: 2vw;
+    margin-top: 2vw;
+
+    color: white;
+    text-decoration: none;
+
+
+}
+
+
+
+#cartita {
+    background-color: rgb(255, 255, 255);
+    /* width: 100%; */
+    margin-left: 24vw;
+
+    margin-top: 120px;
+}
+
+.itemsmenu_titulo1 {
+    margin-left: 3vw;
+    margin-bottom: 1vw;
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.itemsmenu_titulo2 {
+    font-size: 20px;
+    font-weight: bold;
+    margin-left: 3vw;
+    margin-bottom: 1.25vw;
+}
+
+.itemsmenu_titulo3 {
+    margin-left: 4vw;
+    margin-bottom: 0.5vw;
+    font-weight: bold;
+}
+
+.itemsmenu_title4 {
+    font-weight: bold;
+}
+
+.itemsmenu_pair {
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+    margin-bottom: 2vw;
+}
+
+.itemsmenu_item {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-left: 3vw;
+}
+
+.itemsmenu_titleandprice {
+    display: flex;
+    flex-direction: column;
+    margin-left: 1vw;
+    width: 190px;  
+    /* Creo que esto va a haber que tocarlo en el futuro? */
+}
+
+.itemsalgusto_altotitulo {
+    margin-left: 3vw;
+    margin-bottom: 1vw;
+}
+
+.inputitems {
+    display: flex;
+    flex-direction: column;
+    margin-left: 4vw;
+    margin-bottom: 4vw;
+}
+
+
+
+.itemsito {
+    margin-left: 0.5vw;
+    margin-bottom: 0.15vw;
+}
+
+.itemsmenu_descripcion {
+    margin-top: 10px;
+    
+    font-size: 14px;
+}
+
+#tupedido {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    width: 100%;
+    margin-top: 10px;
+
+    border: #7A1A67;
+    border-width: 3px;
+    
+
+    
+}
+
+.cestota {
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    width: 200px;
+
+    height: 60vh;
+    
+    border:3px solid #7A1A67;
+    border-radius: 10%;
+
+    color: #7A1A67;;
+
+    margin-top: 120px;
+
+    /* position: fixed; */
+}
+
+.cesta_superior {
+margin-top: 40px;
+
+}
+
+.cesta_superior > img {
+    width: 80px;
+}
+
+.cesta_superior > div {
+    margin-top: 10px;
+    text-align: center;
+    font-size: 22px;
+}
+
+.cesta_medio {
+    margin-top: 10px;
+    width: 75%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+.cesta_medio_item {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-start;
+
+    margin-top: 20px;
+}
+
+.cesta_medio_item > img {
+    margin-top: 0px;
+    margin-right: 5px;
+}
+
+.cesta_inferior {
+    border:3px solid #7A1A67;
+    border-radius: 15%;
+    width: 60%;
+    height: 40px;
+    text-align: center;
+    
+    font-size: 20px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 40px;
+}
+
+.imagencesta {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin-top: 40px;
+
+}
