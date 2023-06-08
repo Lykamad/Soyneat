@@ -12,7 +12,7 @@ class conectarBD
         $this->tInicio = microtime(true);
         $user = 'root';
         $password = '';
-        $bd = 'soyneat3';
+        $bd = 'soyneat3_1';
         $host = 'localhost';
         $port = 3306;
 

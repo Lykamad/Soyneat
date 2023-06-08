@@ -18,35 +18,36 @@ require_once("includes/conectarBD.php");
     <link href="https://fonts.googleapis.com/css2?family=Advent+Pro:wght@100;400;600;700&display=swap" rel="stylesheet">
 
     <?php
+    session_start();
     require_once('includes/conectarBD.php');
 
     $conexionBD = new conectarBD;
     $conexion = $conexionBD->getConexion();
 
     // echo 'Hola'.$_SESSION["session_pedido"];
-
+    
     // if ($_POST['cartaSubmit']==true) var_dump($_POST['cartaSubmit']);
     // echo 'HolAaaaaaaaaaaaa';
 
     //Este código comprueba si hay algun pedido en la sesion, y si no, lo crea y almacena en la misma.
 
-    // if (!isset($_SESSION["session_pedido"]) || $_SESSION["session_pedido"] == FALSE) {
-    //     echo 'No hay un pedido en proceso, a crearlo.';
+     if (!isset($_SESSION["session_pedido"]) || $_SESSION["session_pedido"] == FALSE) {
+        //  echo 'No hay un pedido en proceso, a crearlo.';
 
-    //     require_once("includes/conectarBD.php");
-    //     $instruccion = "INSERT INTO `pedido` (`idUsuario`) VALUES ('0')";
-    //     mysqli_query($conexion, $instruccion);
+        require_once("includes/conectarBD.php");
+        $instruccion = "INSERT INTO `pedido` (`idUsuario`) VALUES ('3')";
+        mysqli_query($conexion, $instruccion);
 
-    //     require_once("includes/conectarBD.php");
-    //     $instruccion = "SELECT MAX(idPedido) FROM pedido";
-    //     $resultadoConsulta = mysqli_query($conexion, $instruccion) or die("fallo0 en la consulta");
-    //     $arrayResultadoConsulta = mysqli_fetch_array($resultadoConsulta);
-    //     $_SESSION["session_pedido"] = $arrayResultadoConsulta["MAX(idPedido)"];
-
-    //     echo 'Se ha creado un pedido con este id:' . $_SESSION["session_pedido"];
-    // }
-    // $_SESSION["session_pedido"] = 20; 
-
+        require_once("includes/conectarBD.php");
+        $instruccion = "SELECT MAX(idPedido) FROM pedido";
+        $resultadoConsulta = mysqli_query($conexion, $instruccion) or die("fallo0 en la consulta");
+        $arrayResultadoConsulta = mysqli_fetch_array($resultadoConsulta);
+        $_SESSION["session_pedido"] = $arrayResultadoConsulta["MAX(idPedido)"];
+        $_SESSION["session_price"] = 0;
+        // echo 'Se ha creado un pedido con este id:' . $_SESSION["session_pedido"];
+     }
+     
+     
 
 
     if (isset($_POST['cartaDelete'])) {
@@ -68,10 +69,12 @@ require_once("includes/conectarBD.php");
 
     if (isset($_POST['cartaSubmit'])) {
         $cartaSubmit = $_POST['cartaSubmit'];
-        // $session_pedido = $_SESSION["session_pedido"];
+        $session_pedido = $_SESSION["session_pedido"];
         require_once("includes/conectarBD.php");
         $instruccion = "INSERT INTO `itempedido`( `idPedido`, `idCarta`) VALUES ('$session_pedido','$cartaSubmit')";
         mysqli_query($conexion, $instruccion);
+
+        $_SESSION["session_price"] += $_POST['cartaSubmitPrice'];
 
         if (isset($_POST['bebidaSubmit']) && $_POST['bebidaSubmit'] != 0) {
 
@@ -109,6 +112,8 @@ require_once("includes/conectarBD.php");
             require_once("includes/conectarBD.php");
             $instruccion = "INSERT INTO `itempedido`( `idPedido`, `idCarta`) VALUES ('$session_pedido',NULL)";
             mysqli_query($conexion, $instruccion);
+
+            $_SESSION["session_price"] += 8;
 
             require_once("includes/conectarBD.php");
             $instruccion = "SELECT MAX(idItemPedido) FROM itempedido";
@@ -256,6 +261,7 @@ require_once("includes/conectarBD.php");
                  <img src="imagenes/' . $currentItem["pathImagen"] . '" alt="" style="width: 150px;">
 
                  <input type="hidden" name="cartaSubmit" value="' . $currentItem["idCarta"] . '">
+                 <input type="hidden" name="cartaSubmitPrice" value="' . $currentItem["precio"] . '">
                  <input style="width: 36px; height: auto; position: absolute; left: 114px;" type="image"
                      src="imagenes/add.png" alt="Añadir" />
 
@@ -371,6 +377,7 @@ require_once("includes/conectarBD.php");
                                         <div class="itemsmenu_item" style="position:relative">' .
                                 // Atenta al name y value de esto
                                 '<input type="hidden" name="cartaSubmit" value="' . $currentItem["idCarta"] . '">
+                                <input type="hidden" name="cartaSubmitPrice" value="' . $currentItem["precio"] . '">
                                             <img src="imagenes/' . $currentItem["pathImagen"] . '" alt="" style=" width: 150px;">
 
                                             <!-- <input type="hidden" name="idPost" value="4"> -->
@@ -412,6 +419,7 @@ require_once("includes/conectarBD.php");
                                         <div class="itemsmenu_item" style="position:relative">' .
                                 // Atenta al name y value de esto
                                 '<input type="hidden" name="cartaSubmit" value="' . $currentItem["idCarta"] . '">
+                                <input type="hidden" name="cartaSubmitPrice" value="' . $currentItem["precio"] . '">
                                         <img src="imagenes/' . $currentItem["pathImagen"] . '" alt="" style="width: 150px;">
 
                                         <!-- <input type="hidden" name="idPost" value="4"> -->
@@ -454,6 +462,7 @@ require_once("includes/conectarBD.php");
 <div class="itemsmenu_item" style="position:relative">' .
                                 // Atenta al name y value de esto
                                 '<input type="hidden" name="cartaSubmit" value="' . $currentItem["idCarta"] . '">
+                                <input type="hidden" name="cartaSubmitPrice" value="' . $currentItem["precio"] . '">
 <img src="imagenes/' . $currentItem["pathImagen"] . '" alt="" style="width: 150px;">
 
 <!-- <input type="hidden" name="idPost" value="4"> -->
@@ -495,6 +504,7 @@ src="imagenes/add.png" alt="Añadir" />
 <div class="itemsmenu_item" style="position:relative">' .
                                 // Atenta al name y value de esto
                                 '<input type="hidden" name="cartaSubmit" value="' . $currentItem["idCarta"] . '">
+                                <input type="hidden" name="cartaSubmitPrice" value="' . $currentItem["precio"] . '">
 <img src="imagenes/' . $currentItem["pathImagen"] . '" alt="" style="width: 150px;">
 
 <!-- <input type="hidden" name="idPost" value="4"> -->
@@ -536,6 +546,7 @@ src="imagenes/add.png" alt="Añadir" />
 <div class="itemsmenu_item" style="position:relative">' .
                                 // Atenta al name y value de esto
                                 '<input type="hidden" name="cartaSubmit" value="' . $currentItem["idCarta"] . '">
+                                <input type="hidden" name="cartaSubmitPrice" value="' . $currentItem["precio"] . '">
 <img src="imagenes/' . $currentItem["pathImagen"] . '" alt="" style="width: 150px;">
 
 <!-- <input type="hidden" name="idPost" value="4"> -->
@@ -585,7 +596,7 @@ src="imagenes/add.png" alt="Añadir" />
                                         <div class="cesta_medio_item">
                                         <input type="hidden" name="cartaDelete" value="' . $currentItem["idCarta"] . '">
                                         <input style="width: 16px; height: 16px;" type="image" src="imagenes/cross.png" alt="Añadir" />
-                                        <div>' . $currentItem["producto"] . '</div>
+                                        <div>' . $currentItem["producto"] .' '. $currentItem["precio"] .'€ </div>
                                         </div>
                                         </form>';
                             }
@@ -609,7 +620,7 @@ src="imagenes/add.png" alt="Añadir" />
                             <input type="hidden" name="personalizadaDelete" value="' . $currentPersonalizadaId . '">
                             <input style="width: 16px; height: 16px;" type="image" src="imagenes/cross.png" alt="Añadir" />
                             <div class="cesta_columna">
-                            <div>SOYPERSONALIZADA</div>
+                            <div>SOYPERSONALIZADA 8€</div>
                             <div style="font-size: 12px; margin-top: 5px;">';
 
                             require_once("includes/conectarBD.php");
@@ -618,12 +629,12 @@ src="imagenes/add.png" alt="Añadir" />
                             $cantidadIngredientes = mysqli_num_rows($ingredientesConsulta);
 
                             if ($currentIngrediente = mysqli_fetch_array($ingredientesConsulta)) {
-                                echo $currentIngrediente["descripcion_sub"];
+                                echo $currentIngrediente["descripcion"];
                             };
 
                             for ($i = 2; $i <= $cantidadIngredientes; $i += 1) {
                                 $currentIngrediente = mysqli_fetch_array($ingredientesConsulta);
-                                echo ', ' . $currentIngrediente["descripcion_sub"];
+                                echo ', ' . $currentIngrediente["descripcion"];
                             }
 
                             echo '</div></div></div></form>';
@@ -635,7 +646,7 @@ src="imagenes/add.png" alt="Añadir" />
 
 
                 </div>
-                <form action="">
+                <form action="confirmar_pedido.php">
                 <div class="imagencesta">
                     <input style="width: 60%; height: auto; " type="image" src="imagenes/confirmar.png" alt="Añadir" />
 

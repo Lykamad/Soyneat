@@ -63,7 +63,7 @@ require_once("includes/conectarBD.php");
       <?php
       }
     } else {
-      if (!$conexionBD->consigueUsuario($_POST['nombreUsuario'], ($_POST['claveUsuario']))) {
+      if (!$conexionBD->consigueUsuario($_POST['nombreUsuario'], md5($_POST['claveUsuario']))) {
       ?>
         <form action="login.php" method="post">
           <!-- Campos para que el usuario inicie sesion -->

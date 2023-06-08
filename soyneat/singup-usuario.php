@@ -19,7 +19,7 @@
     }
     $email = $_POST['email'];
     $nombreUsuario = $_POST['usuario'];
-    $password = ($_POST['contrasena']);
+    $password = md5($_POST['contrasena']);
     $pago = ($_POST['pago']);
     $nombreReal = ($_POST['nombre']);
 
